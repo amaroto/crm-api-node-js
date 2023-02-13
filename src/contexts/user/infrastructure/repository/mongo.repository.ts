@@ -1,6 +1,6 @@
 import { UserEntity } from "../../domain/user.entity";
 import { UserRepository } from "../../domain/user.repository";
-import UserModel from "../model/user.shchema"
+import UserModel from "../model/user.schema.mongo"
 
 export class MongoRepository implements UserRepository {
     async findUserById(uuid: string): Promise<any> {

@@ -1,18 +1,13 @@
 import { Router } from "express";
 import { UserUseCase } from "../../application/userUseCase";
 import { UserController } from "../controller/user.ctrl";
-// import { MockRepository } from "../repository/mock.repository";
-import { MongoRepository } from "../repository/mongo.repository";
+import { MySqlRepository } from "../repository/mysql.repository";
 
-const route = Router()
+const route = Router();
 
-const userRepo = new MongoRepository()
+const userCtrl = new UserController(new UserUseCase(new MySqlRepository()));
 
-const userUseCase = new UserUseCase(userRepo)
+route.post(`/user`, userCtrl.insertCtrl);
+route.get(`/user`, userCtrl.getCtrl);
 
-const userCtrl = new UserController(userUseCase)
-
-route.post(`/user`, userCtrl.insertCtrl)
-route.get(`/user`, userCtrl.getCtrl)
-
-export default route
+export default route;

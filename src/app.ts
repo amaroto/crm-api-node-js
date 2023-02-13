@@ -2,7 +2,7 @@ import "dotenv/config";
 import express from "express";
 import cors from "express";
 import userRoute from "./contexts/user/infrastructure/route/user.route";
-import dbInit from "./config/db/mongo";
+import dbInit from "./config/db/mysql";
 
 const app = express();
 
@@ -13,6 +13,10 @@ const port = process.env.PORT || 3001;
 
 app.use(userRoute);
 
-dbInit().then();
+// sequelize
+dbInit;
+
+// mongoose
+// dbInit();
 
 app.listen(port, () => console.log(`Started server port ${port}`));
