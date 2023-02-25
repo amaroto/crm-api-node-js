@@ -8,6 +8,8 @@ const route = Router();
 const userCtrl = new UserController(new UserUseCase(new MySqlRepository()));
 
 route.post(`/user`, userCtrl.create);
-route.get(`/user`, userCtrl.find);
+route.get(`/user/:id`, userCtrl.find);
+route.get(`/user`, userCtrl.search);
+route.put(`/user/:id`, userCtrl.update);
 
 export default route;
