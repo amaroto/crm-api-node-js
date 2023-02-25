@@ -1,6 +1,9 @@
 export interface UserEntity {
-  uuid: string;
-  name: string;
+  id: string;
+  name: string | null;
+  firstname: string | null;
+  lastname: string | null;
   email: string;
-  description: string;
+  createdAt: Date;
+  updatedAt: Date;
 }

@@ -4,14 +4,13 @@ import { UserValue } from "../domain/user.value";
 export class UserUseCase {
   constructor(private readonly userRepository: UserRepository) {}
 
-  public registerUser = async ({ name, email, description }) => {
-    const userValue = new UserValue({ name, email });
-    const userCreated = await this.userRepository.registerUser(userValue);
-    return userCreated;
+  public create = async ({ name, firstname, lastname, email }) => {
+    return await this.userRepository.create(
+      new UserValue({ name, firstname, lastname, email })
+    );
   };
 
-  public getDetailUSer = async (uuid: string) => {
-    const user = await this.userRepository.findUserById(uuid);
-    return user;
+  public find = async (id: string) => {
+    return await this.userRepository.find(id);
   };
 }

@@ -1,19 +1,15 @@
 import { UserEntity } from "../../domain/user.entity";
 import { UserRepository } from "../../domain/user.repository";
-import UserModel from "../model/user.schema.mongo"
+import UserModel from "../model/sequelize/user.schema.sequelize";
 
 export class MySqlRepository implements UserRepository {
-    async findUserById(uuid: string): Promise<any> {
-        const user = await UserModel.findOne({uuid})
-        return user
-    }
-    async registerUser(userIn: UserEntity): Promise<any> {
-        const user = await UserModel.create(userIn)
-        return user
-    }
-    async listUser(): Promise<any> {
-        const user = await UserModel.find()
-        return user
-    }
-    
+  async find(id: string): Promise<any> {
+    return await UserModel.findByPk(id);
+  }
+  
+  async create(user: UserEntity): Promise<any> {
+    await UserModel.create(user);
+  }
+
+  async search(): Promise<any> {}
 }
