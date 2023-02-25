@@ -13,10 +13,6 @@ const port = process.env.PORT || 3001;
 
 app.use(userRoute);
 
-// sequelize
 dbInit;
-
-// mongoose
-// dbInit();
 
 app.listen(port, () => console.log(`Started server port ${port}`));
