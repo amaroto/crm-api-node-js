@@ -1,0 +1,83 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "api",
+    "dateExported": "2023-02-26T19:26:27.418Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "145fda10-05ca-4dac-99c0-44134dde57d2",
+            "name": "user",
+            "containerId": "",
+            "created": "2023-02-26T19:24:32.303Z",
+            "sortNum": 10000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "4f94326f-21c4-4510-8280-e9305d7d296f",
+            "colId": "b9b1fd31-944b-43d0-9381-2293cdca7659",
+            "containerId": "145fda10-05ca-4dac-99c0-44134dde57d2",
+            "name": "create user",
+            "url": "http://127.0.0.1:3005/user",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-01-27T14:32:58.632Z",
+            "modified": "2023-02-26T19:24:35.499Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"alexpixel\",\n  \"firstname\": \"alejandro\",\n  \"lastname\": \"maroto\",\n  \"email\": \"text@gmail.com\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "caa8df1f-b5c8-40f0-9157-11cfa8bbebcc",
+            "colId": "b9b1fd31-944b-43d0-9381-2293cdca7659",
+            "containerId": "145fda10-05ca-4dac-99c0-44134dde57d2",
+            "name": "update user",
+            "url": "http://127.0.0.1:3005/user/2440da76-cd04-4e66-96e4-ca474645f4b2",
+            "method": "PUT",
+            "sortNum": 20000,
+            "created": "2023-02-25T15:16:13.822Z",
+            "modified": "2023-02-26T19:24:36.438Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"alexpixel\",\n  \"firstname\": \"alejandro\",\n  \"lastname\": \"maroto2\",\n  \"email\": \"text@gmail.com\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "05caca7e-5f59-4b92-9116-d6304550baf4",
+            "colId": "b9b1fd31-944b-43d0-9381-2293cdca7659",
+            "containerId": "145fda10-05ca-4dac-99c0-44134dde57d2",
+            "name": "find user",
+            "url": "http://127.0.0.1:3005/user/2440da76-cd04-4e66-96e4-ca474645f4b2",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2023-01-27T14:57:36.230Z",
+            "modified": "2023-02-26T19:24:37.166Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "47c8f94e-ba89-4cf3-be8c-c8c37cfdde96",
+            "colId": "b9b1fd31-944b-43d0-9381-2293cdca7659",
+            "containerId": "145fda10-05ca-4dac-99c0-44134dde57d2",
+            "name": "search user",
+            "url": "http://127.0.0.1:3005/user",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2023-02-26T19:24:17.581Z",
+            "modified": "2023-02-26T19:24:44.378Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}

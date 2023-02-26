@@ -13,5 +13,6 @@ route.post(`/user`, controller.create);
 route.get(`/user/:id`, controller.find);
 route.get(`/user`, controller.search);
 route.put(`/user/:id`, controller.update);
+route.delete(`/user/:id`, controller.delete);
 
 export default route;

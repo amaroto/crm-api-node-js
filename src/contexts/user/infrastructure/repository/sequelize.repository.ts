@@ -1,3 +1,4 @@
+import { Criteria } from "../../../shared/domain/criteria/Criteria";
 import { UserEntity } from "../../domain/user.entity";
 import { UserRepository } from "../../domain/user.repository";
 import UserModel from "../model/sequelize/user.schema.sequelize";
@@ -21,10 +22,10 @@ export class SequelizeRepository implements UserRepository {
     return await userDB.update(user);
   }
 
-  async search(): Promise<any> {
+  async search(criteria: Criteria): Promise<any> {
     const { count, rows } = await UserModel.findAndCountAll({
       where: {},
-      offset: 10,
+      offset: 0,
       limit: 2,
     });
 

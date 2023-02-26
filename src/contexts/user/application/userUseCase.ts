@@ -1,5 +1,7 @@
 import { UserRepository } from "../domain/user.repository";
 import { UserEntity } from "../domain/user.entity";
+import { Criteria } from "../../shared/domain/criteria/Criteria";
+
 import { v4 as uuid } from "uuid";
 
 export class UserUseCase {
@@ -23,8 +25,8 @@ export class UserUseCase {
     return await this.userRepository.find(id);
   };
 
-  public search = async (id: string) => {
-    return await this.userRepository.find(id);
+  public search = async (criteria: Criteria) => {
+    return await this.userRepository.search(criteria);
   };
 
   public delete = async (id: string) => {
