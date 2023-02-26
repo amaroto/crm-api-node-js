@@ -2,9 +2,9 @@ import { UserEntity } from "../../domain/user.entity";
 import { UserRepository } from "../../domain/user.repository";
 import UserModel from "../model/sequelize/user.schema.sequelize";
 
-export class MySqlRepository implements UserRepository {
+export class SequelizeRepository implements UserRepository {
   async delete(id: string): Promise<any> {
-    throw new Error("Method not implemented.");
+    return await UserModel.delete(id);
   }
 
   async find(id: string): Promise<any> {
@@ -16,11 +16,21 @@ export class MySqlRepository implements UserRepository {
   }
 
   async update(user: UserEntity): Promise<any> {
-
     console.debug(user);
     const userDB = await UserModel.findByPk(user.id);
     return await userDB.update(user);
   }
 
-  async search(): Promise<any> {}
+  async search(): Promise<any> {
+    const { count, rows } = await UserModel.findAndCountAll({
+      where: {},
+      offset: 10,
+      limit: 2,
+    });
+
+    return {
+      data: rows,
+      totalRows: count,
+    };
+  }
 }

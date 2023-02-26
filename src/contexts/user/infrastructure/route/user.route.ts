@@ -1,15 +1,17 @@
 import { Router } from "express";
 import { UserUseCase } from "../../application/userUseCase";
 import { UserController } from "../controller/user.controller";
-import { MySqlRepository } from "../repository/mysql.repository";
+import { SequelizeRepository } from "../repository/sequelize.repository";
 
 const route = Router();
 
-const userCtrl = new UserController(new UserUseCase(new MySqlRepository()));
+const controller = new UserController(
+  new UserUseCase(new SequelizeRepository())
+);
 
-route.post(`/user`, userCtrl.create);
-route.get(`/user/:id`, userCtrl.find);
-route.get(`/user`, userCtrl.search);
-route.put(`/user/:id`, userCtrl.update);
+route.post(`/user`, controller.create);
+route.get(`/user/:id`, controller.find);
+route.get(`/user`, controller.search);
+route.put(`/user/:id`, controller.update);
 
 export default route;

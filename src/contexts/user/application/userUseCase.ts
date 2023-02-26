@@ -1,5 +1,5 @@
 import { UserRepository } from "../domain/user.repository";
-import { UserValue } from "../domain/user.value";
+import { UserEntity } from "../domain/user.entity";
 import { v4 as uuid } from "uuid";
 
 export class UserUseCase {
@@ -9,13 +9,13 @@ export class UserUseCase {
     const id = uuid();
 
     return await this.userRepository.create(
-      new UserValue({ id, name, firstname, lastname, email })
+      new UserEntity({ id, name, firstname, lastname, email })
     );
   };
 
   public update = async (id: string, { name, firstname, lastname, email }) => {
     return await this.userRepository.update(
-      new UserValue({ id, name, firstname, lastname, email })
+      new UserEntity({ id, name, firstname, lastname, email })
     );
   };
 
