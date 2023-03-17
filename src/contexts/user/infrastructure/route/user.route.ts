@@ -5,9 +5,11 @@ import { SequelizeRepository } from "../repository/sequelize.repository";
 
 const route = Router();
 
-const controller = new UserController(
-  new UserUseCase(new SequelizeRepository())
-);
+// const controller = new UserController(
+//   new UserUseCase(new SequelizeRepository())
+// );
+
+const controller = new UserController(new UserUseCase());
 
 route.post(`/user`, controller.create);
 route.get(`/user/:id`, controller.find);

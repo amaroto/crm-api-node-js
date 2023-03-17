@@ -4,8 +4,14 @@ import { Criteria } from "../../shared/domain/criteria/Criteria";
 
 import { v4 as uuid } from "uuid";
 
+import {  SequelizeRepository } from "../infrastructure/repository/sequelize.repository";
+
 export class UserUseCase {
-  constructor(private readonly userRepository: UserRepository) {}
+  private readonly userRepository: UserRepository
+  
+  constructor() {
+    this.userRepository = new SequelizeRepository()
+  }
 
   public create = async ({ name, firstname, lastname, email }) => {
     const id = uuid();
