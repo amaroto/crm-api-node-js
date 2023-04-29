@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { UserUseCase } from "../../application/userUseCase";
+
 import { UserController } from "../controller/user.controller";
-import { SequelizeRepository } from "../repository/sequelize.repository";
 
 const route = Router();
 

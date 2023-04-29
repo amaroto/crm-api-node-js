@@ -2,6 +2,7 @@ import "dotenv/config";
 import express from "express";
 import cors from "express";
 import userRoute from "./contexts/user/infrastructure/route/user.route";
+import { LoggerUseCase } from "./contexts/shared/application/loggerUseCase";
 
 const app = express();
 
@@ -13,21 +14,27 @@ const port = process.env.PORT || 3001;
 
 app.use(userRoute);
 
-// const logger = require("contexts/shared/logger");
+const logger = new LoggerUseCase();
 
 // Capture 500 errors
 app.use((err, req, res, next) => {
-  res.status(500).send("Could not perform the calculation!");
-  // logger.error(`${err.status || 500} - ${res.statusMessage} - ${err.message} - ${req.originalUrl} - ${req.method} - ${req.ip}`);
+  const errors = err?.errors ? err?.errors.map((e: any) => e.message) : null;
+  const errorMessage = err?.message;
+
+  const error = errors || errorMessage || err;
+
+  if (error) {
+    logger.error(errors || error || err);
+    res.status(500).send(errors || error || err);
+  }
 });
 
 // Capture 404 erors
 app.use((req, res, next) => {
   res.status(404).send("PAGE NOT FOUND");
-  // logger.error(`400 || ${res.statusMessage} - ${req.originalUrl} - ${req.method} - ${req.ip}`);
 });
+
 // Run the server
 app.listen(port, () => {
   console.log(`Server started and running on http://${host}:${port}`);
-  // logger.info(`Server started and running on http://${host}:${port}`);
 });
